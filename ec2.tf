@@ -3,7 +3,7 @@ resource "aws_instance" "node_server" {
   instance_type          = "t3.micro"
   key_name               = "chave-node-prod"
   vpc_security_group_ids = [aws_security_group.node_sg.id]
-  iam_instance_profile   = "ECR-EC2-Role"
+  iam_instance_profile   = "github-infra-role"
 
   tags = {
     Name        = "node-server"
