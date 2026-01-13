@@ -4,6 +4,7 @@ resource "aws_instance" "node_server" {
   key_name               = "chave-node-prod"
   vpc_security_group_ids = [aws_security_group.node_sg.id]
   iam_instance_profile   = "ECR-EC2-Role"
+  user_data              =  file("script.sh")
 
   tags = {
     Name        = "node-server"
