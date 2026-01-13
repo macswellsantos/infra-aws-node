@@ -49,3 +49,12 @@ resource "aws_security_group" "node_sg" {
     cidr_blocks     = ["0.0.0.0/0"]
   }
 }
+
+resource "aws_ssm_parameter" "node_server_public_ip" {
+  name  = "/meu-projeto/prod/ec2/node-server/public_ip"
+  type  = "String"
+
+  value = aws_instance.node_server.public_ip
+
+  depends_on = [aws_instance.node_server]
+}
